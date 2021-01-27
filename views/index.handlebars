@@ -27,8 +27,10 @@
         <span>{{this.amount}}</span>
       </div>
       <div>
-        <form action="" method="GET" style="display:inline"><button>Edit</button></form>
-        <form action="" method="POST" style="display:inline"><button>Delete</button></form>
+        <form action="/records/{{this._id}}" method="GET" style="display:inline"><button>Edit</button></form>
+        <form action="/records/{{this._id}}?_method=DELETE" method="POST" style="display:inline">
+          <button>Delete</button>
+        </form>
       </div>
     </div>
   </li>
