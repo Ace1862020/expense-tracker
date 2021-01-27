@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Record = require('../record')
+const data = require('./data.json')
 
 mongoose.connect('mongodb://localhost/record', { useNewUrlParser: true, useUnifiedTopology: true })
 
@@ -10,11 +11,16 @@ db.on('error', () => {
 })
 db.once('open', () => {
   console.log('mongodb connected!')
-  Record.create({
-    name: 'name-1',
-    category: 'category-1',
-    date: 'day1',
-    amount: 100
+
+  data.records.forEach(record => {
+    Record.create({
+      name: record.name,
+      category: record.category,
+      date: record.date,
+      amount: record.amount,
+      icon: record.icon
+    })
   })
+
   console.log('done')
 })

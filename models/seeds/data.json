@@ -1,0 +1,54 @@
+{
+  "records": [
+    {
+      "name": "房租",
+      "category": "家居物業",
+      "date": "2021-01-05",
+      "amount": "21000",
+      "icon": "fas fa-home"
+    },
+    {
+      "name": "汽車加油",
+      "category": "交通出行",
+      "date": "2021-01-12",
+      "amount": "780",
+      "icon": "fas fa-shuttle-van"
+    },
+    {
+      "name": "午餐7-11",
+      "category": "餐飲食品",
+      "date": "2021-01-12",
+      "amount": "109",
+      "icon": "fas fa-utensils"
+    },
+    {
+      "name": "netflix月費",
+      "category": "fas fa-grin-beam",
+      "date": "2021-01-10",
+      "amount": "350",
+      "icon": "fas fa-grin-beam"
+    }
+  ],
+  "categorys": [
+    {
+      "name": "家居物業",
+      "icon": "fas fa-home"
+    },
+    {
+      "name": "交通出行",
+      "icon": "fas fa-shuttle-van"
+    },
+    {
+      "name": "休閒娛樂",
+      "icon": "fas fa-grin-beam"
+    },
+    {
+      "name": "餐飲食品",
+      "icon": "fas fa-utensils"
+    },
+    {
+      "name": "其他",
+      "icon": "fas fa-pen"
+    }
+  ]
+}

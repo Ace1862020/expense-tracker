@@ -1,1 +1,35 @@
-<h2>Hello world，Im index handlebars</h2>
+<div>
+  <span>$------</span>
+</div>
+<div>
+  <select class="form-select" aria-label="Default select example">
+    <option selected>檢視類別...</option>
+    <option value="居家物業">居家物業</option>
+    <option value="交通出行">交通出行</option>
+    <option value="休閒娛樂">休閒娛樂</option>
+    <option value="餐飲食品">餐飲食品</option>
+    <option value="其他">其他</option>
+  </select>
+</div>
+<ul>
+  {{#each records}}
+  <li>
+    <div>
+      <div>
+        <i class="{{this.icon}}"></i>
+        <div>
+          <p>{{this.name}}</p>
+          <p>{{this.date}}</p>
+        </div>
+      </div>
+      <div>
+        <span>{{this.amount}}</span>
+      </div>
+      <div>
+        <form action="" method=" GET" style="display:inline"><button>Edit</button></form>
+        <form action="" method="POST" style="display:inline"><button>Delete</button></form>
+      </div>
+    </div>
+  </li>
+  {{/each}}
+</ul>
