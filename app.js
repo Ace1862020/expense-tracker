@@ -7,6 +7,7 @@ const port = 3000
 
 const Record = require('./models/record')
 const Category = require('./models/category')
+const generateIcon = require('./public/icon')
 const app = express()
 
 mongoose.connect('mongodb://localhost/record', { useNewUrlParser: true, useUnifiedTopology: true })
@@ -23,6 +24,7 @@ app.set('view engine', 'handlebars')
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
+app.use(express.static('public'))
 
 // Index route
 app.get('/', (req, res) => {
@@ -41,8 +43,9 @@ app.get('/records/new', (req, res) => {
 
 app.post('/records', (req, res) => {
   const { name, date, category, amount } = req.body
+  const icon = generateIcon(category)
   return Record.create({
-    name, date, category, amount
+    name, date, category, amount, icon
   })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))

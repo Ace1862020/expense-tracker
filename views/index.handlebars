@@ -1,41 +1,66 @@
-<div>
-  <span>$------</span>
-</div>
-<div>
-  <select class="form-select" aria-label="Default select example">
-    <option selected>檢視類別...</option>
-    <option value="居家物業">居家物業</option>
-    <option value="交通出行">交通出行</option>
-    <option value="休閒娛樂">休閒娛樂</option>
-    <option value="餐飲食品">餐飲食品</option>
-    <option value="其他">其他</option>
-  </select>
-</div>
-<ul>
-  {{#each records}}
-  <li>
-    <div>
-      <div>
-        <!-- <i class="{{this.icon}}"></i> -->
-        <div>
-          <p>{{this.name}}</p>
-          <p>{{this.date}}</p>
-          <p>{{this.category}}</p>
-        </div>
-      </div>
-      <div>
-        <span>{{this.amount}}</span>
-      </div>
-      <div>
-        <form action="/records/{{this._id}}" method="GET" style="display:inline"><button>Edit</button></form>
-        <form action="/records/{{this._id}}?_method=DELETE" method="POST" style="display:inline">
-          <button>Delete</button>
-        </form>
+<div class="container m-5">
+  <div class="row justify-content-center">
+
+    <!--AMOUNT-->
+    <div class="row justify-content-center mb-3">
+      <span class="text-center">$------</span>
+    </div>
+    <!--CATEGORY-->
+    <div class="row justify-content-center mb-3">
+      <div class="justify-content-center">
+        <select class="form-select" aria-label="Default select example">
+          <option selected>檢視類別...</option>
+          <option value="居家物業">居家物業</option>
+          <option value="交通出行">交通出行</option>
+          <option value="休閒娛樂">休閒娛樂</option>
+          <option value="餐飲食品">餐飲食品</option>
+          <option value="其他">其他</option>
+        </select>
       </div>
     </div>
-  </li>
-  {{/each}}
-  <form action="/records/new" method="GET">
-    <button type="submit">Create</button>
-  </form>
-</ul>
+    <!--LIST-->
+    <div class="row justify-content-center">
+      <ul class="list-group ">
+        {{#each records}}
+        <li class="list-group-item">
+          <div class="d-flex justify-content-between">
+
+            <div class="d-flex">
+              <i class="{{this.icon}} mr-5"></i>
+              <div class="d-flex flex-column">
+                <p class="m-0">{{this.name}}</p>
+                <p class="m-0">{{this.date}}</p>
+                <p class="m-0">{{this.category}}</p>
+              </div>
+            </div>
+
+            <div class="d-flex">
+              <div class="d-flex justify-content-center">
+                <p class="text-nowrap">{{this.amount}}</p>
+              </div>
+            </div>
+
+            <div class="d-flex">
+              <div class="d-flex justify-content-end">
+                <div class="pe-2">
+                  <form action="/records/{{this._id}}" method="GET" style="display:inline"><button>Edit</button></form>
+                </div>
+                <div class="ps-1">
+                  <form action="/records/{{this._id}}?_method=DELETE" method="POST" style="display:inline">
+                    <button>Delete</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </li>
+        {{/each}}
+        <form action="/records/new" method="GET">
+          <button type="submit">Create</button>
+        </form>
+      </ul>
+    </div>
+
+  </div>
+</div>

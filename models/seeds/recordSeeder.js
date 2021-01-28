@@ -12,15 +12,7 @@ db.on('error', () => {
 db.once('open', () => {
   console.log('mongodb connected!')
 
-  data.records.forEach(record => {
-    Record.create({
-      name: record.name,
-      category: record.category,
-      date: record.date,
-      amount: record.amount,
-      icon: record.icon
-    })
-  })
+  Record.create(data.records)
 
   console.log('done')
 })
