@@ -8,6 +8,7 @@ const port = 3000
 const Record = require('./models/record')
 const Category = require('./models/category')
 const generateIcon = require('./public/icon')
+const totalAmount = require('./public/total')
 const app = express()
 
 mongoose.connect('mongodb://localhost/record', { useNewUrlParser: true, useUnifiedTopology: true })
@@ -30,10 +31,11 @@ app.use(express.static('public'))
 app.get('/', (req, res) => {
   Record.find()
     .lean()
-    .then(records => res.render('index', { records }))
-    .catch(error => {
-      console.error(error => console.error(error))
+    .then(records => {
+      const total = totalAmount(records)
+      res.render('index', { records, total })
     })
+    .catch(error => console.error(error))
 })
 
 // Create route
@@ -63,12 +65,14 @@ app.get('/records/:id', (req, res) => {
 app.put('/records/:id', (req, res) => {
   const id = req.params.id
   const { name, date, category, amount } = req.body
+  const icon = generateIcon(category)
   Record.findById(id)
     .then(record => {
       record.name = name
       record.date = date
       record.category = category
       record.amount = amount
+      record.icon = icon
       return record.save()
     })
     .then(record => res.redirect('/'))

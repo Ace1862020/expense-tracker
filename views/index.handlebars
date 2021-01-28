@@ -3,18 +3,17 @@
 
     <!--AMOUNT-->
     <div class="row justify-content-center mb-3">
-      <span class="text-center">$------</span>
+      <h1 class="text-center">${{total}}</h1>
     </div>
     <!--CATEGORY-->
     <div class="row justify-content-center mb-3">
       <div class="justify-content-center">
         <select class="form-select" aria-label="Default select example">
-          <option selected>檢視類別...</option>
-          <option value="居家物業">居家物業</option>
-          <option value="交通出行">交通出行</option>
-          <option value="休閒娛樂">休閒娛樂</option>
-          <option value="餐飲食品">餐飲食品</option>
-          <option value="其他">其他</option>
+          <option selected>全部類別</option>
+          {{#each records}}
+          <option value="{{this.category}}">{{this.category}}</option>
+          {{/each}}
+
         </select>
       </div>
     </div>
