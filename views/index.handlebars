@@ -6,17 +6,31 @@
       <h1 class="text-center">${{total}}</h1>
     </div>
     <!--CATEGORY-->
-    <div class="row justify-content-center mb-3">
-      <div class="justify-content-center">
-        <select class="form-select" aria-label="Default select example">
-          <option selected>全部類別</option>
-          {{#each records}}
-          <option value="{{this.category}}">{{this.category}}</option>
-          {{/each}}
+    <div class="row justify-content-between mb-3">
 
-        </select>
+      <div class="col-6">
+        <form action="/records/new" method="GET">
+          <button class="btn btn-outline-primary" type="submit">Create</button>
+        </form>
+      </div>
+      <div class="col-6">
+        <div class="dropdow d-flex justify-content-end" style="display: inline;">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="categoryFilter" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            項目類別篩選
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="categoryFilter">
+            <li><a class="dropdown-item" href="/">全部支出</a></li>
+            <li><a class="dropdown-item" href="/filter/living">家居物業</a></li>
+            <li><a class="dropdown-item" href="/filter/traffic">交通出行</a></li>
+            <li><a class="dropdown-item" href="/filter/entertainment">休閒娛樂</a></li>
+            <li><a class="dropdown-item" href="/filter/foods">餐飲食品</a></li>
+            <li><a class="dropdown-item" href="/filter/other">其他支出</a></li>
+          </ul>
+        </div>
       </div>
     </div>
+
     <!--LIST-->
     <div class="row justify-content-center">
       <ul class="list-group ">
@@ -29,7 +43,7 @@
               <div class="d-flex flex-column">
                 <p class="m-0">{{this.name}}</p>
                 <p class="m-0">{{this.date}}</p>
-                <p class="m-0">{{this.category}}</p>
+                <p class="m-0">{{this.category_cn}}</p>
               </div>
             </div>
 
@@ -42,11 +56,13 @@
             <div class="d-flex">
               <div class="d-flex justify-content-end">
                 <div class="pe-2">
-                  <form action="/records/{{this._id}}" method="GET" style="display:inline"><button>Edit</button></form>
+                  <form action="/records/{{this._id}}" method="GET" style="display:inline">
+                    <button class="btn btn-outline-success">Edit</button>
+                  </form>
                 </div>
                 <div class="ps-1">
                   <form action="/records/{{this._id}}?_method=DELETE" method="POST" style="display:inline">
-                    <button>Delete</button>
+                    <button class="btn btn-outline-danger">Delete</button>
                   </form>
                 </div>
               </div>
@@ -55,11 +71,8 @@
           </div>
         </li>
         {{/each}}
-        <form action="/records/new" method="GET">
-          <button type="submit">Create</button>
-        </form>
+
       </ul>
     </div>
-
   </div>
 </div>

@@ -1,21 +1,20 @@
 function generateIcon(category) {
-  // switch 對比 category 裡的值，是否符合 case 條件
+  // switch方法，對比(category)裡的值，是否符合與'case'相同的條件
   switch (category) {
-    case '家居物業':
+    case 'living':
       return 'fas fa-home'
-      break;
-    case '交通出行':
+
+    case 'traffic':
       return 'fas fa - shuttle - van'
-      break;
-    case '休閒娛樂':
+
+    case 'entertainment':
       return 'fas fa - grin - beam'
-      break;
-    case '餐飲食品':
+
+    case 'foods':
       return 'fas fa-utensils'
-      break;
-    case '其他':
+
+    case 'other':
       return 'fas fa-pen'
-      break;
   }
 }
 
