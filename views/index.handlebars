@@ -10,14 +10,14 @@
 
       <div class="col-6">
         <form action="/records/new" method="GET">
-          <button class="btn btn-outline-primary" type="submit">Create</button>
+          <button class="btn btn-secondary" type="submit">新增</button>
         </form>
       </div>
       <div class="col-6">
         <div class="dropdow d-flex justify-content-end" style="display: inline;">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="categoryFilter" data-bs-toggle="dropdown"
             aria-expanded="false">
-            項目類別篩選
+            支出類別篩選
           </button>
           <ul class="dropdown-menu" aria-labelledby="categoryFilter">
             <li><a class="dropdown-item" href="/">全部支出</a></li>
@@ -39,11 +39,11 @@
           <div class="d-flex justify-content-between">
 
             <div class="d-flex">
-              <i class="{{this.icon}} me-3"></i>
+              <i class="{{this.icon}} fa-2x me-3" style="color:steelblue"></i>
               <div class="d-flex flex-column">
-                <p class="m-0">{{this.name}}</p>
-                <p class="m-0">{{this.date}}</p>
-                <p class="m-0">{{this.category_cn}}</p>
+                <p class="m-0" style="font-size: 0.8em;">{{this.name}}</p>
+                <p class="m-0" style="font-size: 0.8em;">{{this.date}}</p>
+                <p class="m-0" style="font-size: 0.8em;">{{this.category_cn}}</p>
               </div>
             </div>
 
@@ -55,14 +55,18 @@
 
             <div class="d-flex">
               <div class="d-flex justify-content-end">
-                <div class="pe-2">
+                <div class="pe-3">
                   <form action="/records/{{this._id}}" method="GET" style="display:inline">
-                    <button class="btn btn-outline-success">Edit</button>
+                    <button class="btn btn-outline-success">
+                      <i class="far fa-edit"></i>
+                    </button>
                   </form>
                 </div>
                 <div class="ps-1">
                   <form action="/records/{{this._id}}?_method=DELETE" method="POST" style="display:inline">
-                    <button class="btn btn-outline-danger">Delete</button>
+                    <button class="btn btn-outline-danger">
+                      <i class="far fa-minus-square"></i>
+                    </button>
                   </form>
                 </div>
               </div>

@@ -1,16 +1,9 @@
-const mongoose = require('mongoose')
+const db = require('../../config/mongoose')
 const Record = require('../record')
 const data = require('./data.json')
 
-mongoose.connect('mongodb://localhost/record', { useNewUrlParser: true, useUnifiedTopology: true })
-
-const db = mongoose.connection
-
-db.on('error', () => {
-  console.log('mongodb error')
-})
 db.once('open', () => {
-  console.log('mongodb connected!')
+  console.log('mongodb connected to the record data!')
 
   Record.create(data.records)
 
