@@ -3,23 +3,31 @@
     <form action="/records" method="POST">
 
       <div class="row mb-3">
-        <span>* 為必填項目</span>
+        <span>
+          <p style="color: firebrick;">* 為必填項目</p>
+        </span>
       </div>
       <!--名稱 name-->
       <div class="row mb-3">
-        <label for="inputName" class="col-sm-2 col-form-label">*名稱</label>
+        <label for="inputName" class="col-sm-2 col-form-label">
+          <p style="color: firebrick; display:inline;">*</p>名稱
+        </label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="inputName" name="name" placeholder="品項名稱">
         </div>
       </div>
       <!--日期 date-->
       <div class="input-group mb-3">
-        <label for="inputDate" class="col-sm-2 col-form-label">*日期</label>
+        <label for="inputDate" class="col-sm-2 col-form-label">
+          <p style="color: firebrick; display:inline;">*</p>日期
+        </label>
         <input type="date" class="form-control" id="inputDate" name="date" placeholder="年/月/日">
       </div>
       <!--類別 category-->
       <div class=" input-group mb-3">
-        <label for="selectCategory" class="col-sm-2 col-form-label">*類別</label>
+        <label for="selectCategory" class="col-sm-2 col-form-label">
+          <p style="color: firebrick; display:inline;">*</p>類別
+        </label>
         <select class="form-select" id="selectCategory" name="category">
           <option value="living">居家物業</option>
           <option value="traffic">交通出行</option>
@@ -30,14 +38,24 @@
       </div>
       <!--金額 amount-->
       <div class="row mb-3">
-        <label for="inputAmount" class="col-sm-2 col-form-label">*金額</label>
+        <label for="inputAmount" class="col-sm-2 col-form-label">
+          <p style="color: firebrick; display:inline;">*</p>金額
+        </label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="inputAmount" name="amount">
         </div>
       </div>
       <!--按鈕-->
-      <button type="submit">Create</button>
-      <a href="/">Back</a>
+      <div class="d-flex justify-content-between">
+        <button class="btn btn-dark" type="submit">新增</button>
+        <button class="btn btn-secondary" type="button">
+          <a href="/" style="text-decoration:none;">
+            <p style="color: rgb(255, 255, 255); display:inline;">返回</p>
+          </a>
+        </button>
+
+      </div>
+
     </form>
   </div>
 </div>

@@ -1,21 +1,24 @@
-<div class="container m-5">
-  <div class="row justify-content-center">
+<div class="container my-5">
+  <div class="row">
 
-    <!--AMOUNT-->
-    <div class="row justify-content-center mb-3">
-      <h1 class="text-center">${{total}}</h1>
-    </div>
-    <!--CATEGORY-->
-    <div class="row justify-content-between mb-3">
-
-      <div class="col-6">
-        <form action="/records/new" method="GET">
-          <button class="btn btn-secondary" type="submit">新增</button>
-        </form>
+    <!--Amount-->
+    <div class="justify-content-center mb-3">
+      <div class="d-flex justify-content-center">
+        <p class="m-3 pt-4" style="color: rgb(30, 30, 30); font-weight: bold; display:inline;">總支出:</p>
+        <h1 class="text-center"
+          style="color: tomato; font-family: 'Montserrat', sans-serif; font-size:5em; display:inline;">
+          {{total}}
+        </h1>
       </div>
-      <div class="col-6">
-        <div class="dropdow d-flex justify-content-end" style="display: inline;">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="categoryFilter" data-bs-toggle="dropdown"
+    </div>
+    <!--Creat & Category-->
+    <div class=" justify-content-center mb-3">
+      <div class="d-flex justify-content-between">
+        <form action="/records/new" method="GET" style="display: inline;">
+          <button class="btn btn-dark" type="submit">新增</button>
+        </form>
+        <div class="dropdow" style="display: inline;">
+          <button class="btn btn-dark dropdown-toggle" type="button" id="categoryFilter" data-bs-toggle="dropdown"
             aria-expanded="false">
             支出類別篩選
           </button>
@@ -32,51 +35,55 @@
     </div>
 
     <!--LIST-->
-    <div class="row justify-content-center">
+    <div class="justify-content-center">
       <ul class="list-group ">
         {{#each records}}
         <li class="list-group-item">
           <div class="d-flex justify-content-between">
 
-            <div class="d-flex">
-              <i class="{{this.icon}} fa-2x me-3" style="color:steelblue"></i>
+            <div class="d-flex justify-content-between">
+              <div class="d-flex align-items-center me-4">
+                <i class="{{this.icon}} fa-2x"
+                  style="font-size:30px; line-height:15%; width: 30px; color:rgb(60, 96, 161);"></i>
+              </div>
+
               <div class="d-flex flex-column">
-                <p class="m-0" style="font-size: 0.8em;">{{this.name}}</p>
-                <p class="m-0" style="font-size: 0.8em;">{{this.date}}</p>
-                <p class="m-0" style="font-size: 0.8em;">{{this.category_cn}}</p>
+                <p class="m-0" style="font-family: font-family: 'Overpass', sans-serif;">{{this.name}}</p>
+                <p class="m-0" style="font-family: font-family: 'Overpass', sans-serif;">{{this.date}}</p>
+                <p class="m-0"
+                  style="color:darkgrey; font-family: font-family: 'Overpass', sans-serif; font-size:12px;">
+                  {{this.category_cn}}</p>
               </div>
             </div>
 
-            <div class="d-flex">
-              <div class="d-flex justify-content-center">
-                <p class="text-nowrap">{{this.amount}}</p>
+            <div class="d-flex align-items-center">
+              <p class="text-nowrap m-0">{{this.amount}}</p>
+            </div>
+
+            <div class="d-flex justify-content-end">
+              <div class="d-flex align-items-center pe-3">
+                <form action="/records/{{this._id}}" method="GET" style="display:inline">
+                  <button class="btn btn-outline-success">
+                    編輯
+                  </button>
+                </form>
+              </div>
+              <div class="d-flex align-items-center ps-1">
+                <form action="/records/{{this._id}}?_method=DELETE" method="POST" style="display:inline"
+                  onsubmit="return onSubmit()">
+                  <button class="btn btn-outline-danger">
+                    刪除
+                  </button>
+                </form>
               </div>
             </div>
 
-            <div class="d-flex">
-              <div class="d-flex justify-content-end">
-                <div class="pe-3">
-                  <form action="/records/{{this._id}}" method="GET" style="display:inline">
-                    <button class="btn btn-outline-success">
-                      <i class="far fa-edit"></i>
-                    </button>
-                  </form>
-                </div>
-                <div class="ps-1">
-                  <form action="/records/{{this._id}}?_method=DELETE" method="POST" style="display:inline">
-                    <button class="btn btn-outline-danger">
-                      <i class="far fa-minus-square"></i>
-                    </button>
-                  </form>
-                </div>
-              </div>
-            </div>
 
           </div>
         </li>
         {{/each}}
       </ul>
     </div>
-
   </div>
+
 </div>
