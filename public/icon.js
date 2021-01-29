@@ -5,10 +5,10 @@ function generateIcon(category) {
       return 'fas fa-home'
 
     case 'traffic':
-      return 'fas fa - shuttle - van'
+      return 'fas fa-shuttle-van'
 
     case 'entertainment':
-      return 'fas fa - grin - beam'
+      return 'fas fa-grin-beam'
 
     case 'foods':
       return 'fas fa-utensils'
