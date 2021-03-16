@@ -29,11 +29,9 @@
           <p style="color: firebrick; display:inline;">*</p>類別
         </label>
         <select class="form-select" id="selectCategory" name="category">
-          <option value="living">居家物業</option>
-          <option value="traffic">交通出行</option>
-          <option value="entertainment">休閒娛樂</option>
-          <option value="foods">餐飲食品</option>
-          <option value="other">其他</option>
+          {{#each categorys}}
+          <option value="{{this.category}}">{{this.category_cn}}</option>
+          {{/each}}
         </select>
       </div>
 

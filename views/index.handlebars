@@ -14,21 +14,22 @@
     <!--Creat & Category-->
     <div class=" justify-content-center mb-3">
       <div class="d-flex justify-content-between">
-
-        <!-- 月份篩選器 -->
-
+        <!-- Date dropdowns -->
+        <div class="">
+          <button type="button"></button>
+          <input type="date" name="date" aria-labelledby="dateFilter">
+        </div>
+        <!-- Category dropdowns -->
         <div class="dropdow" style="display: inline;">
           <button class="btn btn-dark dropdown-toggle" type="button" id="categoryFilter" data-bs-toggle="dropdown"
             aria-expanded="false">
             支出類別篩選
           </button>
           <ul class="dropdown-menu" aria-labelledby="categoryFilter">
-            <li><a class="dropdown-item" href="/">全部支出</a></li>
-            <li><a class="dropdown-item" href="/filter/living">家居物業</a></li>
-            <li><a class="dropdown-item" href="/filter/traffic">交通出行</a></li>
-            <li><a class="dropdown-item" href="/filter/entertainment">休閒娛樂</a></li>
-            <li><a class="dropdown-item" href="/filter/foods">餐飲食品</a></li>
-            <li><a class="dropdown-item" href="/filter/other">其他支出</a></li>
+            <li><a class="dropdown-item" href="/">全部類別</a></li>
+            {{#each categorys}}
+            <li><a class="dropdown-item" href="/filter{{this.url}}">{{this.category_cn}}</a></li>
+            {{/each}}
           </ul>
         </div>
       </div>
