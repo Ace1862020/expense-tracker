@@ -1,22 +1,35 @@
 const express = require('express')
+const session = require('express-session')
 const exphbs = require('express-handlebars')
 const Handlebars = require('handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 
 const routes = require('./routes')
+
+const usePassport = require('./config/passport')
 require('./config/mongoose')
-const PORT = process.env.PORT || 3000
+
 const app = express()
+const PORT = process.env.PORT || 3000
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
-app.use(
-  express.static('public'),
-  bodyParser.urlencoded({ extended: true }),
-  methodOverride('_method'),
-  routes)
+// set session
+app.use(session({
+  secret: 'ExpenseTrackerTicker',
+  resave: false,
+  saveUninitialized: true
+}))
+
+app.use(express.static('public'))
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
+
+usePassport(app)
+
+app.use(routes)
 
 // select category helper
 Handlebars.registerHelper('ifEqual', function (category, categoryName, options) {
