@@ -2,7 +2,7 @@
   <div class="row mt-5">
     <form action="/records/{{record._id}}?_method=PUT" method="POST">
       <!--名稱 name-->
-      <div class="row mb-3">
+      <div class="input-group mb-3">
         <label for="inputName" class="col-sm-2 col-form-label">名稱</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="inputName" name="name" placeholder="品項名稱" value="{{record.name}}">
@@ -24,8 +24,15 @@
           <option value="other" {{#ifEqual record.category_cn "其他" }} selected {{/ifEqual}}>其他</option>
         </select>
       </div>
+
+      <!--店家 merchant-->
+      <div class="input-group mb-3">
+        <label for="inputMerchant" class="col-sm-2 col-form-label">店家</label>
+        <input type="text" class="form-control" id="inputMerchant" name="merchent" placeholder="店家" value="">
+      </div>
+
       <!--金額 amount-->
-      <div class="row mb-3">
+      <div class="input-group mb-3">
         <label for="inputAmount" class="col-sm-2 col-form-label">金額</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="inputAmount" name="amount" value="{{record.amount}}">
