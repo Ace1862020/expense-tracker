@@ -14,6 +14,7 @@ router.post('/login', passport.authenticate('local', {
   failureRedirect: '/users/login'
 }))
 
+
 // Register
 router.get('/register', (req, res) => {
   res.render('register')
@@ -33,6 +34,7 @@ router.post('/register', (req, res) => {
       .catch(error => console.log(error))
   })
 })
+
 
 // Logout
 router.get('/logout', (req, res) => {

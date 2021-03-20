@@ -24,13 +24,13 @@ const recordSchema = new Schema({
   merchent: {
     type: String,
     required: false,
+  },
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    index: true,
+    required: true
   }
-  //userId: {
-  //  type: Schema.Types.ObjectId,
-  //  ref: 'User',
-  //  index: true,
-  //  required: true
-  //}
 })
 
 module.exports = mongoose.model('Record', recordSchema)

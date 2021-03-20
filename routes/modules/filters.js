@@ -8,7 +8,7 @@ const totalAmount = require('../../public/total')
 const dateGroup = require('../../public/dateGroup')
 
 router.get('/', (req, res) => {
-
+  const userId = req.user._id
   const categorySelect = req.query.category
   const dateSelect = req.query.date
   let categorys = []
@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
       categorys.push(...items)
     })
 
-  Record.find()
+  Record.find({ userId })
     .lean()
     .then((records) => {
       const dates = dateGroup(records)

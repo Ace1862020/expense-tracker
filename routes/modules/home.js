@@ -11,14 +11,14 @@ const dateGroup = require('../../public/dateGroup')
 // Index route
 router.get('/', (req, res) => {
   let categorys = []
-  //const userId = req.user._id 
+  const userId = req.user._id
   Category.find()
     .lean()
     .then(items => {
       categorys.push(...items)
     })
     .then(() => {
-      Record.find()
+      Record.find({ userId })
         .lean()
         .sort({ date: 'desc' })
         .then(records => {

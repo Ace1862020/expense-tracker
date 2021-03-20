@@ -8,4 +8,8 @@ db.once('open', () => {
   Record.create(recordList.records)
 
   console.log('Record done')
+  return db.close()
 })
+  .then(() => {
+    console.log('Record connection close.')
+  })
