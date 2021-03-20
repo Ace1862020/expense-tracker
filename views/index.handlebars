@@ -13,26 +13,31 @@
     </div>
     <!--Creat & Category-->
     <div class=" justify-content-center mb-3">
-      <div class="d-flex justify-content-between">
-        <!-- Date dropdowns -->
-        <div class="">
-          <button type="button"></button>
-          <input type="date" name="date" aria-labelledby="dateFilter">
-        </div>
-        <!-- Category dropdowns -->
-        <div class="dropdow" style="display: inline;">
-          <button class="btn btn-dark dropdown-toggle" type="button" id="categoryFilter" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            支出類別篩選
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="categoryFilter">
-            <li><a class="dropdown-item" href="/">全部類別</a></li>
-            {{#each categorys}}
-            <li><a class="dropdown-item" href="/filter{{this.url}}">{{this.category_cn}}</a></li>
+
+      <form action="/filters" method="GET">
+
+        <div class="d-flex justify-content-between">
+          <!-- Date dropdowns -->
+          <select class="form-select" id="select-date" name="date" aria-label="select date" onchange="submit()">
+            <option value="">所有日期</option>
+            {{#each dates}}
+            <option value="{{this.date}}" {{#ifEqual this.selectDateValue this.date}} selected {{/ifEqual}}>
+              {{this.date}}
+            </option>
             {{/each}}
-          </ul>
+          </select>
+
+          <!-- Category dropdowns -->
+          <select class="form-select" id="select-category" name="category" aria-label="select category"
+            onchange="submit()">
+            <option value=""> 所有類別</option>
+            {{#each categorys}}
+            <option value="{{this.category}}" {{#ifEqual this.selectCategoryValue this.category}} selected {{/ifEqual}}>
+              {{this.category_cn}} </option>
+            {{/each}}
+          </select>
         </div>
-      </div>
+      </form>
     </div>
 
     <!--LIST-->

@@ -39,8 +39,8 @@ app.use((req, res, next) => {
 app.use(routes)
 
 // select category helper
-Handlebars.registerHelper('ifEqual', function (category, categoryName, options) {
-  if (category === categoryName) {
+Handlebars.registerHelper('ifEqual', function (task, targetTask, options) {
+  if (task === targetTask) {
     return options.fn(this)
   } else {
     return options.inverse(this)

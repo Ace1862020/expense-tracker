@@ -5,7 +5,7 @@ const router = express.Router()
 const Record = require('../../models/record')
 const Category = require('../../models/category')
 const totalAmount = require('../../public/total')
-
+const dateGroup = require('../../public/dateGroup')
 
 
 // Index route
@@ -16,7 +16,6 @@ router.get('/', (req, res) => {
     .lean()
     .then(items => {
       categorys.push(...items)
-      //console.log(categorys)
     })
     .then(() => {
       Record.find()
@@ -24,21 +23,9 @@ router.get('/', (req, res) => {
         .sort({ date: 'desc' })
         .then(records => {
           const total = totalAmount(records)
-          res.render('index', { records, total, categorys })
+          const dates = dateGroup(records)
+          res.render('index', { records, total, categorys, dates })
         })
-    })
-    .catch(error => console.error(error))
-})
-
-// filter route
-router.get('/filter/:category', (req, res) => {
-  //const userId = req.user._id
-  const category = req.params.category
-  Record.find({ category })
-    .lean()
-    .then(records => {
-      const total = totalAmount(records)
-      res.render('index', { records, total })
     })
     .catch(error => console.error(error))
 })
