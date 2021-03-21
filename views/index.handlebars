@@ -18,7 +18,8 @@
 
         <div class="d-flex justify-content-between">
           <!-- Date dropdowns -->
-          <select class="form-select" id="select-date" name="date" aria-label="select date" onchange="submit()">
+          <select class="form-select me-2" id="select-date" name="date" aria-label="select date" onchange="submit()"
+            style="width: 30%;">
             <option value="">所有日期</option>
             {{#each dates}}
             <option value="{{this.date}}" {{#ifEqual this.selectDateValue this.date}} selected {{/ifEqual}}>
@@ -29,7 +30,7 @@
 
           <!-- Category dropdowns -->
           <select class="form-select" id="select-category" name="category" aria-label="select category"
-            onchange="submit()">
+            onchange="submit()" style="width: 30%;">
             <option value=""> 所有類別</option>
             {{#each categorys}}
             <option value="{{this.category}}" {{#ifEqual this.selectCategoryValue this.category}} selected {{/ifEqual}}>
