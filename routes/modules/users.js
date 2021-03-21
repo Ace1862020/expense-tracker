@@ -54,8 +54,8 @@ router.post('/register', (req, res) => {
         password: hash
       }))
       .then(() => {
-        //req.flash('success_msg', 'registration success.')
-        return res.redirect('/login')
+        req.flash('success_msg', 'registration success.')
+        return res.redirect('/users/login')
       })
       .catch(error => console.log(error))
   })
